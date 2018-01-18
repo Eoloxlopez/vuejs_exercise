@@ -16,7 +16,7 @@
 <body>
 
   <!-- https://vuejs.org/v2/guide/index.html -->
-  <div id="app">
+  <div id="app" class="container">
     <!--
            TODO Show collection data. See js/script.js
            - Show collection Title
@@ -27,18 +27,21 @@
                - Display its "value" property in italic style
       -->
     <h1>{{ d.collection.title }}</h1>
-    <div class="card">
-      <div class="card-body">
-        <ul v-for="item in d.collection.items" style="list-style:none; padding-bottom:1.5em">
-          <li v-for="Peli in item.data" style="padding-bottom:5px;">
-            <span style="font-weight: bold">{{ Peli.prompt }}: </span>
-            <span style="font-style:italic">{{ Peli.value }}</span>
-          </li>
-          <li>
-            <a class="card-link" v-bind:href="item.href">Mas informacion sobre {{ item.data[0].value }}</a>
-          </li>
-        </ul>
-      </div>
+    <div class="row">
+      <div class="card col-md-4" v-for="item in d.collection.items">
+          <div class="card-body"  >
+            <h5  class="card-title" v-for="elemento in item.data" v-if="elemento.name=='name'">{{ elemento.value }}</h5>
+            <ul style="list-style:none; padding-bottom:1.5em">
+              <li v-for="Peli in item.data"  v-if="Peli.name!='name'" style="padding-bottom:5px;">
+                <span style="font-weight: bold">{{ Peli.prompt }}: </span>
+                <span style="font-style:italic">{{ Peli.value }}</span>
+              </li>
+              <li>
+                <a class="card-link" v-bind:href="item.href" v-for="elemento in item.data" v-if="elemento.name=='name'">Mas informacion sobre {{ elemento.value }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
     </div>
   </div>
 
