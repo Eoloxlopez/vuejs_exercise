@@ -26,13 +26,14 @@
                - Display its "prompt" property in bold style
                - Display its "value" property in italic style
       -->
-    <h1>{{ d.collection.title }}</h1>
+    <h1 style="text-align:center">{{ d.collection.title }}</h1>
     <div class="row">
       <div class="card col-md-4" v-for="item in d.collection.items">
+        <img class="card-image-top"  v-for="elemento in item.data" v-if="elemento.name=='image'" v-bind:src="elemento.value" alt="HOLA">
           <div class="card-body"  >
             <h5  class="card-title" v-for="elemento in item.data" v-if="elemento.name=='name'">{{ elemento.value }}</h5>
-            <ul style="list-style:none; padding-bottom:1.5em">
-              <li v-for="Peli in item.data"  v-if="Peli.name!='name'" style="padding-bottom:5px;">
+            <ul style="list-style:none; padding-bottom:1.5em; padding-left:0">
+              <li v-for="Peli in item.data"  v-if="Peli.name!='name' && Peli.name!='image'" style="padding-bottom:5px;">
                 <span style="font-weight: bold">{{ Peli.prompt }}: </span>
                 <span style="font-style:italic">{{ Peli.value }}</span>
               </li>
