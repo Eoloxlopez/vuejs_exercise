@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>VueJS Exercise</title>
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <title>VueJS Exercise</title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+    crossorigin="anonymous">
+  <!-- https://vuejs.org/v2/guide/#Getting-Started -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
 
-    <!-- https://vuejs.org/v2/guide/#Getting-Started -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  </head>
+<body>
 
-  <body>
-
-    <!-- https://vuejs.org/v2/guide/index.html -->
-    <div id="app">
-      <!--
+  <!-- https://vuejs.org/v2/guide/index.html -->
+  <div id="app">
+    <!--
            TODO Show collection data. See js/script.js
            - Show collection Title
            - For each item (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
@@ -25,10 +26,32 @@
                - Display its "prompt" property in bold style
                - Display its "value" property in italic style
       -->
-
+    <h1>{{ d.collection.title }}</h1>
+    <div class="card">
+      <div class="card-body">
+        <ul v-for="item in d.collection.items" style="list-style:none; padding-bottom:1.5em">
+          <li v-for="Peli in item.data" style="padding-bottom:5px;">
+            <span style="font-weight: bold">{{ Peli.prompt }}: </span>
+            <span style="font-style:italic">{{ Peli.value }}</span>
+          </li>
+          <li>
+            <a class="card-link" v-bind:href="item.href">Mas informacion sobre {{ item.data[0].value }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <script src="js/script.js"></script>
-  </body>
+  <!-- <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div> -->
+  <script src="js/script.js"></script>
+</body>
 
 </html>
