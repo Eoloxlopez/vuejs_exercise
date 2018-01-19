@@ -52,16 +52,26 @@ var app = new Vue({
   },
   methods: {
 
-    tituloPelicula: function (item) {
+    damePropiedad: function (item, propiedad) {
 
       var resultado;
 
       for (var i = 0; i < item.data.length; i++) {
-        if (item.data[i].name == "name") {
+        if (item.data[i].name == propiedad) {
           resultado = item.data[i].value;
         }
       }
       return resultado;
+    },
+
+    ButtonClick: function(event){
+      var boton = event.target;
+    
+      if (boton.innerText == "Hi") {
+        boton.innerText = "Show"
+      }else{
+        boton.innerText = "Hi"
+      }
     }
 
   }

@@ -29,10 +29,11 @@
     <h1 style="text-align:center">{{ d.collection.title }}</h1>
     <div class="row">
       <div class="card col-md-4" v-for="item in d.collection.items">
-        <img class="card-image-top" v-for="elemento in item.data" v-if="elemento.name=='image'" v-bind:src="elemento.value" alt="HOLA">
+        <img class="card-image-top" v-bind:src="damePropiedad(item,'image')" alt="HOLA">
         <div class="card-body">
           <!-- <h5  class="card-title" v-for="elemento in item.data" v-if="elemento.name=='name'">{{ elemento.value }}</h5> -->
-          <h5 class="card-title">{{tituloPelicula(item)}}</h5>
+          <h5 class="card-title">{{damePropiedad(item, "name")}}</h5>
+          <button class="btn btn-primary btn-block" v-on:click="ButtonClick">Show</button>
           <ul style="list-style:none; padding-bottom:1.5em; padding-left:0">
             <li v-for="Peli in item.data" v-if="Peli.name!='name' && Peli.name!='image'" style="padding-bottom:5px;">
               <span style="font-weight: bold">{{ Peli.prompt }}: </span>
