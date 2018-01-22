@@ -66,11 +66,14 @@ var app = new Vue({
 
     ButtonClick: function(event){
       var boton = event.target;
-    
-      if (boton.innerText == "Hi") {
-        boton.innerText = "Show"
+      var lista = boton.nextElementSibling;
+
+      if (boton.innerText == "Show") {
+        boton.innerText = "Hi";
+        lista.style.display = "none";
       }else{
-        boton.innerText = "Hi"
+        boton.innerText = "Show";
+        lista.style.display = "block";        
       }
     }
 
